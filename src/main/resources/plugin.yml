@@ -1,7 +1,7 @@
 ##  Plugin Information  ##
 name: FireworkManager
 version: version-number-unknown
-main: net.syam.fireworkmanager.FireworkManager
+main: net.syamn.fireworkmanager.FireworkManager
 description: FireworkManager Plugin
 website: http://sakura-server.net/
 softdepend: [Vault]
