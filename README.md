@@ -1,0 +1,4 @@
+FireworkManager
+===============
+
+CraftBukkit FireworkManager Plugin
