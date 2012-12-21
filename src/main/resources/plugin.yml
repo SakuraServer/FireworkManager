@@ -1,0 +1,18 @@
+##  Plugin Information  ##
+name: FireworkManager
+version: version-number-unknown
+main: net.syam.fireworkmanager.FireworkManager
+description: FireworkManager Plugin
+website: http://sakura-server.net/
+softdepend: [Vault]
+##  Original Author     ##
+author: syam
+commands:
+    fireworkmanager:
+      usage: /fireworkmanager - to see the help
+      aliases: [firework, fw, fwm]
+      description: To see the FireworkManager help.
+permissions:
+    fireworkmanager.admin.reload:
+        default: op
+        description: Allow use reload command
