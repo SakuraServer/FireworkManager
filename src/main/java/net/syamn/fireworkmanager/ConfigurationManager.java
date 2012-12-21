@@ -99,7 +99,15 @@ public class ConfigurationManager {
     }
 
     /* ***** Begin Configuration Getters *********************** */
-    // Advertise
+    // General
+    
+    // Launch by Click
+    public int getLaunchTool(){
+        return conf.getInt("LaunchToolID", 293);
+    }
+    public int getCheckDistance(){
+        return conf.getInt("CheckDistance", 300);
+    }
 
     // Vault
     public boolean getUseVault() {

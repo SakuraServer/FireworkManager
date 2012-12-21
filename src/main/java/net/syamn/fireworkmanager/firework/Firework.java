@@ -33,12 +33,14 @@ public class Firework{
         if (item.getType() != Material.FIREWORK){
             throw new IllegalArgumentException("Parameter item must be " + Material.FIREWORK.name() +".");
         }
+        /*
         if (!(item.getItemMeta() instanceof FireworkMeta)){
             throw new IllegalArgumentException("Could not cast to FireworkMeta!");
         }
+        */
         
         this.item = item;
-        this.meta = (FireworkMeta) item.getItemMeta();
+        //this.meta = (FireworkMeta) item.getItemMeta();
     }
     
     /**
@@ -46,7 +48,7 @@ public class Firework{
      * @return ItemStack
      */
     public ItemStack getItem(){
-        this.item.setItemMeta(meta);
+        //this.item.setItemMeta(meta);
         return this.item;
     }
     

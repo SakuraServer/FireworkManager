@@ -13,10 +13,12 @@ import org.bukkit.permissions.Permissible;
 public enum Perms {
     /* 権限ノード */
     // User Commands
+    SET ("user.set"),
 
     // Free Permissions
 
     // Spec Permissions
+    CLICK_LAUNCH ("spec.clicklaunch"),
 
     // Admin Commands
     RELOAD("admin.reload"),

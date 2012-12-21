@@ -12,8 +12,10 @@ import java.util.logging.Logger;
 import net.milkbowl.vault.Vault;
 import net.milkbowl.vault.economy.Economy;
 import net.syamn.fireworkmanager.command.BaseCommand;
+import net.syamn.fireworkmanager.command.ClickCommand;
 import net.syamn.fireworkmanager.command.HelpCommand;
 import net.syamn.fireworkmanager.command.ReloadCommand;
+import net.syamn.fireworkmanager.listener.PlayerListener;
 import net.syamn.fireworkmanager.util.Metrics;
 
 import org.bukkit.command.Command;
@@ -33,9 +35,6 @@ public class FireworkManager extends JavaPlugin {
     public final static Logger log = Logger.getLogger("Minecraft");
     public final static String logPrefix = "[FireworkManager] ";
     public final static String msgPrefix = "&6[FireworkManager] &f";
-
-    // ** Listener **
-    // ServerListener serverListener = new ServerListener(this);
 
     // ** Commands **
     private List<BaseCommand> commands = new ArrayList<BaseCommand>();
@@ -83,7 +82,7 @@ public class FireworkManager extends JavaPlugin {
         }
 
         // Regist Listeners
-        // pm.registerEvents(serverListener, this);
+        pm.registerEvents(new PlayerListener(this), this);
 
         // コマンド登録
         registerCommands();
@@ -125,6 +124,7 @@ public class FireworkManager extends JavaPlugin {
         commands.add(new HelpCommand());
 
         // Main Commands
+        commands.add(new ClickCommand());
 
         // Admin Commands
         commands.add(new ReloadCommand());
