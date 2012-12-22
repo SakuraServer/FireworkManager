@@ -14,6 +14,7 @@ public enum Perms {
     /* 権限ノード */
     // User Commands
     SET ("user.set"),
+    CLICK ("user.click"),
 
     // Free Permissions
 

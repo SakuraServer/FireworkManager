@@ -15,6 +15,7 @@ import net.syamn.fireworkmanager.command.BaseCommand;
 import net.syamn.fireworkmanager.command.ClickCommand;
 import net.syamn.fireworkmanager.command.HelpCommand;
 import net.syamn.fireworkmanager.command.ReloadCommand;
+import net.syamn.fireworkmanager.command.SetCommand;
 import net.syamn.fireworkmanager.listener.PlayerListener;
 import net.syamn.fireworkmanager.util.Metrics;
 
@@ -124,6 +125,7 @@ public class FireworkManager extends JavaPlugin {
         commands.add(new HelpCommand());
 
         // Main Commands
+        commands.add(new SetCommand());
         commands.add(new ClickCommand());
 
         // Admin Commands

@@ -75,7 +75,7 @@ public class ClickCommand extends BaseCommand {
 
     @Override
     public boolean permission() {
-        return Perms.SET.has(sender);
+        return Perms.CLICK.has(sender);
     }
     
     enum ClickParam{
