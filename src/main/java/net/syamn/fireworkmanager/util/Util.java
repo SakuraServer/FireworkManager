@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Locale;
 
 /**
  * Util (Util.java)
@@ -112,5 +113,25 @@ public class Util {
     public static String getDispTimeByUnixTime(long unixSec){
         SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
         return sdf.format(new Date(unixSec * 1000));
+    }
+    
+    /**
+     * 列挙配列要素の中から一致する要素を返す
+     * @param type 走査対象の列挙体配列
+     * @param string 文字列
+     * @return <T> T or null
+     */
+    public static <T extends Enum<T>> T isMatches(T[] type, String string){
+        if (type == null || string == null)
+            return null;
+        
+        string = string.toUpperCase(Locale.ENGLISH);
+        for (T check : type){
+            if (string.equals(check.name().toUpperCase(Locale.ENGLISH))){
+                return check;
+            }
+        }
+        
+        return null;
     }
 }
