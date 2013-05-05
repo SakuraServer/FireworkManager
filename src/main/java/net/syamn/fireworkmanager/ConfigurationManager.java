@@ -6,9 +6,7 @@ package net.syamn.fireworkmanager;
 
 import java.io.File;
 import java.util.logging.Logger;
-
 import net.syamn.fireworkmanager.util.FileStructure;
-
 import org.bukkit.configuration.file.FileConfiguration;
 
 /**

@@ -5,23 +5,23 @@
 package net.syamn.fireworkmanager.listener;
 
 import java.util.logging.Logger;
-
 import net.syamn.fireworkmanager.ConfigurationManager;
 import net.syamn.fireworkmanager.FireworkManager;
 import net.syamn.fireworkmanager.Perms;
-import net.syamn.fireworkmanager.firework.Firework;
-import net.syamn.fireworkmanager.firework.FireworkContainer;
-import net.syamn.fireworkmanager.firework.FireworkUtil;
-
+import net.syamn.fireworkmanager.firework.FireworkMetaContainer;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event.Result;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.Event.Result;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.FireworkMeta;
 
 /**
  * PlayerListener (PlayerListener.java)
@@ -58,11 +58,12 @@ public class PlayerListener implements Listener{
             return;
         }
         
-        final Firework firework = FireworkContainer.getRandomFirework(player);
-        if (firework != null && firework.getItem() != null){
+        final FireworkMeta meta = FireworkMetaContainer.getRandomFireworkMeta(player);
+        if (meta != null){
             Block target = player.getTargetBlock(null, config.getCheckDistance());
             if (target != null && target.getType() != Material.AIR){
-                FireworkUtil.launch(firework, target.getLocation());
+                Firework fw = (Firework)target.getWorld().spawnEntity(target.getLocation(), EntityType.FIREWORK);
+                fw.setFireworkMeta(meta);
             }
         }
     }

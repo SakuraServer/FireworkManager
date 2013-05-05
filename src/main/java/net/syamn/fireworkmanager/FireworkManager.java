@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-
 import net.milkbowl.vault.Vault;
 import net.milkbowl.vault.economy.Economy;
 import net.syamn.fireworkmanager.command.BaseCommand;
@@ -18,7 +17,6 @@ import net.syamn.fireworkmanager.command.ReloadCommand;
 import net.syamn.fireworkmanager.command.SetCommand;
 import net.syamn.fireworkmanager.listener.PlayerListener;
 import net.syamn.fireworkmanager.util.Metrics;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;

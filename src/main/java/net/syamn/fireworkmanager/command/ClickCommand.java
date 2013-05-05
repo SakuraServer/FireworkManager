@@ -4,18 +4,14 @@
  */
 package net.syamn.fireworkmanager.command;
 
-import java.util.Locale;
-import java.util.Set;
 
 import net.syamn.fireworkmanager.Perms;
 import net.syamn.fireworkmanager.exception.CommandException;
-import net.syamn.fireworkmanager.firework.Firework;
-import net.syamn.fireworkmanager.firework.FireworkContainer;
+import net.syamn.fireworkmanager.firework.FireworkMetaContainer;
 import net.syamn.fireworkmanager.util.Actions;
-
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.yaml.snakeyaml.tokens.StreamEndToken;
+import org.bukkit.inventory.meta.FireworkMeta;
 
 /**
  * ClickCommand (ClickCommand.java)
@@ -49,19 +45,20 @@ public class ClickCommand extends BaseCommand {
                 throw new CommandException("&c花火を手に持っていません！");
             }
         }
+        FireworkMeta meta = (FireworkMeta)item.getItemMeta();
         
         switch (param){
             case SET:
-                FireworkContainer.removeSetMap(player);
-                FireworkContainer.putSetMap(player, new Firework(item));
+                FireworkMetaContainer.removeSetMap(player);
+                FireworkMetaContainer.putSetMap(player, meta);
                 Actions.message(sender, "&a手に持っている花火を選択しました！");
                 break;
             case ADD:
-                FireworkContainer.putSetMap(player, new Firework(item));
+                FireworkMetaContainer.putSetMap(player, meta);
                 Actions.message(sender, "&a手に持っている花火を追加選択しました！");
                 break;
             case CLEAR:
-                FireworkContainer.removeSetMap(player);
+                FireworkMetaContainer.removeSetMap(player);
                 Actions.message(sender, "&a選択済み花火リストをクリアしました！");
                 break;
             default:

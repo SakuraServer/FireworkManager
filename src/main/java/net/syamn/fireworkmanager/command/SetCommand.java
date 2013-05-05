@@ -7,19 +7,13 @@ package net.syamn.fireworkmanager.command;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import net.syamn.fireworkmanager.Perms;
-import net.syamn.fireworkmanager.command.ClickCommand.ClickParam;
 import net.syamn.fireworkmanager.exception.CommandException;
-import net.syamn.fireworkmanager.firework.Firework;
-import net.syamn.fireworkmanager.firework.FireworkContainer;
 import net.syamn.fireworkmanager.util.Actions;
 import net.syamn.fireworkmanager.util.Util;
-
-import org.bukkit.FireworkEffect;
-import org.bukkit.FireworkEffect.Type;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.FireworkMeta;
 
 /**
  * SetCommand (SetCommand.java)
@@ -45,7 +39,7 @@ public class SetCommand extends BaseCommand {
             throw new CommandException("&c花火を手に持っていません！");
         }
         
-        Firework firework = new Firework(item);
+        FireworkMeta meta = (FireworkMeta)item.getItemMeta();
         
         switch (param){
             case TYPE:
@@ -53,7 +47,8 @@ public class SetCommand extends BaseCommand {
                 //Type t = Util.isMatches(FireworkEffect.Type.values(), args.get(0));
                
             case CLEAR:
-                firework.clearEffects();
+                meta.clearEffects();
+                item.setItemMeta(meta);
                 Actions.message(sender, "&aこの花火のエフェクトを削除しました！");
                 break;
                 
@@ -66,7 +61,9 @@ public class SetCommand extends BaseCommand {
                     throw new CommandException("&c飛距離は1～127を指定する必要があります！");
                 }
                 
-                firework.setPower(power);
+                meta.setPower(power);
+                item.setItemMeta(meta);
+                
                 Actions.message(sender, "&aこの花火の飛距離を " + power + " に変更しました！");
                 break;
                 
@@ -74,8 +71,6 @@ public class SetCommand extends BaseCommand {
                 throw new CommandException("&cNot defined "+ param.name() + ", Please contact plugin developer.");
         }
         
-        item = firework.getItem();
-        player.setItemInHand(item);
     }
     
     private void sendSetCommandUsage() throws CommandException{
